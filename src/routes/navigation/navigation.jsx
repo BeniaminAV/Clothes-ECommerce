@@ -11,7 +11,7 @@ const Navigation = () => {
         <LogoCrown />
         <div className="nav-links-container">
           <LinkRouter label="SHOP" to="/shop" />
-          <LinkRouter label="SIGN IN" to="/signIn" />
+          <LinkRouter label="SIGN IN" to="/auth" />
         </div>
       </div>
       <Outlet />
