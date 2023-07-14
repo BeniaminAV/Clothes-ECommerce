@@ -4,6 +4,7 @@ import FormInput from "../../formInput/Input"
 import Button from "../../button/button"
 import GoogleLogin from "../googleLogin/googleLogin"
 import { signInAuthUserWithEmailAndPassword } from "../../../utils/firebase"
+import { toast } from "react-hot-toast"
 
 const defaultFormFields = {
   email: "",
@@ -23,6 +24,7 @@ const Login = () => {
 
     try {
       await signInAuthUserWithEmailAndPassword(email, password)
+      toast.success("Logged in!")
       resetFormFields()
     } catch (error) {
       console.log(error)

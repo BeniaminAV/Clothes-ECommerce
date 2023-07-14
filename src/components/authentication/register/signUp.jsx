@@ -6,6 +6,7 @@ import {
 } from "../../../utils/firebase"
 import FormInput from "../../formInput/Input"
 import Button from "../../button/button"
+import { toast } from "react-hot-toast"
 
 const defaultFormFields = {
   displayName: "",
@@ -26,7 +27,7 @@ const SignUpForm = () => {
     event.preventDefault()
 
     if (password !== confirmPassword) {
-      alert("Password incorect")
+      toast.error("Password doesn't match!")
       return
     }
 
@@ -34,12 +35,14 @@ const SignUpForm = () => {
       const { user } = await createAuthUserWithEmailAndPassword(email, password)
 
       await createUserDocumentForAuth(user, { displayName })
+      toast.success("Resgistred")
       resetFormFields()
     } catch (error) {
       if (error.code === "user already exists") {
         alert("user exist")
       }
       console.log(error.message)
+      toast.error("User exists")
     }
   }
 
