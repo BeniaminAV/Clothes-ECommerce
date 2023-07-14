@@ -2,7 +2,7 @@ import "./login.scss"
 import { useState } from "react"
 import FormInput from "../../formInput/Input"
 import Button from "../../button/button"
-import GoogleLogin from "../googleLogin/login"
+import GoogleLogin from "../googleLogin/googleLogin"
 import { signInAuthUserWithEmailAndPassword } from "../../../utils/firebase"
 
 const defaultFormFields = {
@@ -22,8 +22,7 @@ const Login = () => {
     event.preventDefault()
 
     try {
-      const response = await signInAuthUserWithEmailAndPassword(email, password)
-      console.log(response)
+      await signInAuthUserWithEmailAndPassword(email, password)
       resetFormFields()
     } catch (error) {
       console.log(error)
