@@ -5,9 +5,14 @@ import "./navigation.scss"
 import LinkRouter from "../../components/Link/Link"
 import { signOutUser } from "../../utils/firebase"
 import { UserContext } from "../../context/user.context"
+import CartIcon from "../../components/cartIcon/cartIcon"
+import CartDropDown from "../../components/cartDropDown/dropDown"
+import { CartContext } from "../../context/cart.context"
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext)
+
+  const { isCartOpen } = useContext(CartContext)
 
   return (
     <Fragment>
@@ -20,8 +25,10 @@ const Navigation = () => {
           ) : (
             <LinkRouter label="SIGN IN" to="/auth" />
           )}
+          <LinkRouter label={<CartIcon />} />
         </div>
       </div>
+      {isCartOpen && <CartDropDown />}
       <Outlet />
     </Fragment>
   )
