@@ -93,7 +93,6 @@ export const CartProvider = ({ children }) => {
       (total, cartItem) => total + cartItem.quantity * cartItem.price,
       0
     )
-
     dispatch(
       createAction(CART_ACTION_TYPE.SET_CART_ITEMS, {
         cartItems: newCartItems,
