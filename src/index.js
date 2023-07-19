@@ -3,23 +3,21 @@ import ReactDOM from "react-dom/client"
 import "./scss/index.scss"
 import App from "./App"
 import { BrowserRouter } from "react-router-dom"
-import { UserProvider } from "./context/user.context"
 import ToastProvider from "./context/toast.context"
-import { CartProvider } from "./context/cart.context"
-import { CategoriesProvider } from "./context/category.context"
+import { Provider } from "react-redux"
+import { persistor, store } from "./store/store"
+import { PersistGate } from "redux-persist/integration/react"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <UserProvider>
-        <CategoriesProvider>
-          <CartProvider>
-            <App />
-            <ToastProvider />
-          </CartProvider>
-        </CategoriesProvider>
-      </UserProvider>
-    </BrowserRouter>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <BrowserRouter>
+          <App />
+          <ToastProvider />
+        </BrowserRouter>
+      </PersistGate>
+    </Provider>
   </React.StrictMode>
 )
