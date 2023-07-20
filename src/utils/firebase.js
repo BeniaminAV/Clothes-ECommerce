@@ -22,12 +22,7 @@ import {
 } from "firebase/firestore"
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB9I8hjW7oktMCYYEpLYvmD8yuGU9wN5-I",
-  authDomain: "clothesecomers.firebaseapp.com",
-  projectId: "clothesecomers",
-  storageBucket: "clothesecomers.appspot.com",
-  messagingSenderId: "705363103760",
-  appId: "1:705363103760:web:7e3a37ff5aef2a8b61ba95",
+//YOUR FIREBASE KEY
 }
 
 //Initialize App
